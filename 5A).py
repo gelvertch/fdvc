@@ -23,8 +23,10 @@ def sistema_movimiento_5a(state, t):
     # F_der = k*Q*q / (d/2 - x)^2 
     fuerza_x = k * Q * q * (1/(d/2 + x)**2 - 1/(d/2 - x)**2) 
      
-a = fuerza_x / m 
-return [v, a] 
+    
+    a = fuerza_x / m 
+    return [v, a] 
+
 # 3. Simulación 
 # Desplazamiento inicial muy pequeño para observar el M.A.S. 
 x0 = [0.01 * d, 0]  
@@ -32,10 +34,13 @@ t = np.linspace(0, 1e-13, 100)
 solucion = odeint(sistema_movimiento_5a, x0, t) 
 posiciones = solucion[:, 0] 
 velocidades = solucion[:, 1] 
+
 # 4. Resultados (primeras 30 posiciones) 
 print(f"{'Punto':<10} | {'Posición (m)':<20} | {'Velocidad (m/s)':<20}") 
 for i in range(30): 
-print(f"{i+1:<10} | {posiciones[i]:<20.4e} | {velocidades[i]:<20.4e}") 
+    
+    print(f"{i+1:<10} | {posiciones[i]:<20.4e} | {velocidades[i]:<20.4e}") 
+
 # 5. Gráfica 
 plt.figure(figsize=(10, 5)) 
 plt.plot(t * 1e15, posiciones * 1e10, 'ro-', markersize=4, label='Posición (Å)') 
