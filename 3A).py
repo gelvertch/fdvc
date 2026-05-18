@@ -17,7 +17,7 @@ xs = [x]
 ys = [y] 
 for i in range(pasos): 
 dx = x - xq 
-dy = y - yq   
+dy = y - yq    
     r = np.sqrt(dx**2 + dy**2) 
      
     Ex = k * q * dx / r**3 
